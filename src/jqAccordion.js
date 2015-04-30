@@ -1,16 +1,20 @@
 // jQueryUI datepicker
 
 
-ko.bindingHandlers.jqDatePicker = {
+ko.bindingHandlers.jqAccordion = {
 
     init: function(element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
 
         var options = valueAccessor() || {};
 
         // Initialize with options
+        // Note that we hide/show the accordion to reduce flicker
         setTimeout(function() {
-            $(element).datepicker(options);
+            $(element).hide();
+            $(element).accordion(options);
+            $(element).show();
         }, 0);
+
     }
 
 };
