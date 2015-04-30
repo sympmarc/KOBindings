@@ -1,3 +1,6 @@
+// jQueryUI datepicker
+
+
 ko.bindingHandlers.jqDatePicker = {
 
     init: function(element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
