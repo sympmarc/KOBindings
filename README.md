@@ -6,4 +6,6 @@ See the [Creating custom bindings](http://knockoutjs.com/documentation/custom-bi
 I've collected some of these binding handlers and built others. Where possible, I give credit to the source in each file. Unfortunately, in my first year or so of using KnockoutJS, I collected a lot of these without maintaining the source location. If you see your work here, please let me know and I will give you credit!
 
 * **/src** contains one file per bindingHandler
-* **/html** contains example usage of the corresponding bindingHandler
+* **/html** contains example files demonstrating the usage of the corresponding bindingHandler.  
+
+Note: Both the folders and contents within /src and /html should be copied to SharePoint to be able to use the examples of SharePoint specific functions.
