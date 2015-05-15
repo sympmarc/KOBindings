@@ -3,14 +3,14 @@
 <meta name="WebPartPageExpansion" content="full" />
 <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=8">
-        <title>KO Bindings For JQuery UI</title>
+        <title>KO Bindings For SharePoint 2010 People Picker</title>
 		
 		<!--Styles-->
 		<link href="http://code.jquery.com/ui/1.11.4/themes/black-tie/jquery-ui.css" rel="stylesheet"/>
 		
     </head>
     <body>
-
+    	<h1>KO Bindings For SharePoint 2010 People Picker</h1>
 		<div>
 			<span data-bind="text: userDisplay" style="padding-right:5px"></span>
 			<img data-bind="spPeoplePicker: userInformation" src="/_layouts/images/addressbook.gif"/>

@@ -3,11 +3,7 @@
 <meta name="WebPartPageExpansion" content="full" />
 <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>KO Bindings For JQuery UI</title>
-		
-		<!--Styles-->
-		<link href="http://code.jquery.com/ui/1.11.4/themes/black-tie/jquery-ui.css" rel="stylesheet"/>
-		
+        <title>Home Page For Examples</title>
     </head>
     <body>
     <h2>Home Page For Examples</h2>
