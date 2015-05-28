@@ -1,0 +1,75 @@
+﻿<!doctype html>
+    <head>
+<meta name="WebPartPageExpansion" content="full" />
+<meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>KO Bindings For JQuery UI</title>
+		
+		<!--Styles-->
+		<link href="http://code.jquery.com/ui/1.11.4/themes/black-tie/jquery-ui.css" rel="stylesheet"/>
+		
+    </head>
+    <body>
+    <h1>jQuery UI Examples</h1>
+    
+	<h2>jQuery UI Accordion</h2>
+
+	<div data-bind="foreach: myAccordion, jqAccordion: { header: 'h4', collapsible: true}">
+		<h4 data-bind="text: header"></h4>
+		<p data-bind="text: content"></p>
+	</div>
+	<hr/>
+	<h2>jQuery UI DatePicker</h2>
+	<input type="text" data-bind="jqDatePicker: { showOn: 'both', buttonImage: '/_layouts/images/calendar.gif', buttonImageOnly: true }, value: myDate " />
+  	<hr/>
+	<h2>jQuery UI Button</h2>
+	<input type="submit" data-bind="jqButton: { label: myButtonText() }, value: myButton " />
+	<hr/>
+	<h2>jQuery UI Dialog</h2>
+
+	<div data-bind="jqDialog: { autoOpen: true}">
+		<p data-bind="text: myDialog"></p>
+	</div>
+
+
+	<!-- Scripts via CDN change these is you have issues with CDN or local versions to work with on SharePoint -->
+	<script src="http://code.jquery.com/jquery-1.11.3.js"></script>
+	<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-debug.js"></script>
+	<!-- Bindings-->
+	<script src="../../src/jqUI/jqAccordion.js"></script>
+	<script src="../../src/jqUI/jqButton.js"></script>
+	<script src="../../src/jqUI/jqDatePicker.js"></script>
+	<script src="../../src/jqUI/jqDialog.js"></script>
+	<!-- On Ready -->
+	<script>
+		$(document).ready(function(){
+			
+			//Example View Model
+			var exViewModel = function(){
+				var self = this;
+
+				//jQuery UI Accordion Example jqAccordion
+				self.myAccordion = ko.observableArray([{header: "First Header", content: "First content panel"},{header: "Second Header", content: "Second content panel"},{header: "Third Header", content: "Third content panel"}]);				
+				
+				//jQuery UI Button Example jqButton
+				self.myButton = ko.observable();
+				self.myButtonText = ko.observable("Test Me");
+
+				//jQuery UI Date Picker Example jqDatePicker
+				self.myDate = ko.observable();
+
+				//jQuery UI Dialog Example jqDialog
+				self.myDialog = "This is the default dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon."
+			};
+			
+			//Apply Bindings;
+			ko.applyBindings(exViewModel);
+		});
+	</script>
+	
+    </body>
+</html>
+
+
+
