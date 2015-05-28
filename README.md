@@ -1,4 +1,4 @@
-# KOBindings
+# KOBindings [![bitHound Score](https://www.bithound.io/github/sympmarc/KOBindings/badges/score.svg)](https://www.bithound.io/github/sympmarc/KOBindings)
 bindingHandlers for [KnockoutJS](http://knockoutjs.com/) generally useful for working with SharePoint
 
 See the [Creating custom bindings](http://knockoutjs.com/documentation/custom-bindings.html) section of the [KnockoutJS documentation]() for an overview.
