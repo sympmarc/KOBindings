@@ -5,3 +5,4 @@ Description: This bindingHandler uses the d3js library to draw donut graphics on
 
 Status: Beta
 
+Requires: d3js
