@@ -11,6 +11,11 @@ ko.bindingHandlers.jqDatePicker = {
         setTimeout(function() {
             $(element).datepicker(options);
         }, 0);
+
+
+        ko.utils.domNodeDisposal.addDisposeCallback(element, function() {
+            $(element).datepicker('destroy');
+        });        
     }
 
 };
