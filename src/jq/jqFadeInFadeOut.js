@@ -17,5 +17,10 @@ ko.bindingHandlers.jqFadeVisible = {
 		{
      	   $(element).fadeOut();
     	}
+
+        //Disposal Logic
+        ko.utils.domNodeDisposal.addDisposeCallback(element, function() {
+            $(element).off();
+        });//end disposal logic        
     } //end init
 };

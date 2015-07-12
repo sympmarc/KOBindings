@@ -1,5 +1,5 @@
 //jQuery Data Table Custom Binding
-ko.bindingHandlers.jqDataTable = {
+ko.bindingHandlers.jqDataTables = {
 
     init: function (element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
         // First get the latest data that we're bound to
