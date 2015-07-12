@@ -17,8 +17,10 @@ bindingHandlers
 | ----------------- |:-------------:|
 | d3donut           | d3js          |
 | jqFadeInFadeOut   | jQuery        |
+| jqDataTables      | jQuery Data Tables|
 | jqAccordion       | jQueryUI      |
 | jqButton          | jQueryUI      |
 | jqDatePicker      | jQueryUI      |
 | jqDialog          | jQueryUI      |
 | spPeoplePicker    | jQueryUI      |
+
