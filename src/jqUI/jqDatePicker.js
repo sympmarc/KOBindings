@@ -1,5 +1,4 @@
-define(["jquery", "jqueryui", "moment"], function($, jqueryui, moment) {
-
+    /*Requires Moment, jQuery, and jQuery*/
 
     /* Based on this implementation from RP Niemeyer:
      http://stackoverflow.com/questions/6612705/jquery-ui-datepicker-change-event-not-caught-by-knockoutjs
@@ -55,5 +54,3 @@ define(["jquery", "jqueryui", "moment"], function($, jqueryui, moment) {
         }
 
     };
-
-}
