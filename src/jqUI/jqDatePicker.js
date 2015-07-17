@@ -1,4 +1,4 @@
-    /*Requires Moment, jQuery, and jQuery*/
+    /*Requires Moment, jQuery, and jQuery UI*/
 
     /* Based on this implementation from RP Niemeyer:
      http://stackoverflow.com/questions/6612705/jquery-ui-datepicker-change-event-not-caught-by-knockoutjs
