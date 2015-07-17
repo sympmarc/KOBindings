@@ -15,6 +15,11 @@ ko.bindingHandlers.jqAccordion = {
             $(element).show();
         }, 0);
 
+        ko.utils.domNodeDisposal.addDisposeCallback(element, function() {
+            $(element).accordion('destroy');
+        });
+
+
     }
 
 };

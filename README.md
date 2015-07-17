@@ -7,7 +7,6 @@ I've collected some of these binding handlers and built others. Where possible, 
 
 * **/src** contains one file per bindingHandler
 * **/html** contains example files demonstrating the usage of the corresponding bindingHandler.  
-* **/docs** contains documentation on the usage of the corresponding bindingHandler.  
 
 Note: Both the folders and contents within /src and /html should be copied to SharePoint to be able to use the examples of SharePoint specific functions.
 
@@ -18,8 +17,10 @@ bindingHandlers
 | ----------------- |:-------------:|
 | d3donut           | d3js          |
 | jqFadeInFadeOut   | jQuery        |
+| jqDataTables      | jQuery Data Tables|
 | jqAccordion       | jQueryUI      |
 | jqButton          | jQueryUI      |
 | jqDatePicker      | jQueryUI      |
 | jqDialog          | jQueryUI      |
 | spPeoplePicker    | jQueryUI      |
+
