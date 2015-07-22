@@ -37,11 +37,11 @@ ko.bindingHandlers.spPeoplePicker = {
                         var sharePointID = $xml.find('Value:first').text();
                         //Resolve deferred object
                         //Save this information
-                        var xData = {
+                        var xData = [{
                                 loginName: fqn,
-                                userName: dispText,
+                                displayName: dispText,
                                 userId: ''
-                            } //end call dialog 
+                            }] //end call dialog 
 
                         //Resolve
                         dfd.resolve(xData);
@@ -56,7 +56,7 @@ ko.bindingHandlers.spPeoplePicker = {
                         addToUserInfoList: true
                     }).done(function(xData) {
                         //Get User Id
-                        userData.userId = jQuery(xData).SPFilterNode("UserInfoID").text();
+                        userData[0].userId = jQuery(xData).SPFilterNode("UserInfoID").text();
 
                         //Set Observable
                         value(userData);
@@ -64,6 +64,69 @@ ko.bindingHandlers.spPeoplePicker = {
                     }); //end done
                 }); //end resultPromise
 
+
+            }); //end click
+
+        } //end init
+};
+
+ko.bindingHandlers.spPeopleChecker = {
+    init: function(element, valueAccessor, allBindingsAccessor) {
+            // Initially set the element to be instantly visible/hidden depending on the value
+            var value = valueAccessor();
+
+            //Parameter trigger provides dom element that initaties show or hide
+            var valueUnwrapped = ko.unwrap(value);
+
+            var currentUser = $().SPServices.SPGetCurrentUser();
+            var domainGuess = currentUser.substring(0,currentUser.indexOf("\\"));
+
+            //Click
+            $(element).on("keypress", function(e) {
+                if (e.keyCode == 13) {
+
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    loginName = element.value;
+
+                    if (loginName === "") {
+                        return;
+                    };
+                    
+                    if(!~loginName.indexOf("/")){
+                        loginName = domainGuess + "\\" + loginName;
+                    }
+
+                    var users = [];
+
+                    $().SPServices({
+                        operation: "GetUserInfo",
+                        userLoginName: loginName
+                    }).done(function(xData) {
+                        
+                        $(xData).find("User").each(function() {
+                            users.push({
+                                loginName: $(this).attr("LoginName"),
+                                displayName: $(this).attr("Name"),
+                                userId : $(this).attr("ID")
+                            });
+                        });
+
+                    }).fail(function (xData) {
+                        users.push({
+                            loginName: "",
+                            displayName: loginName,
+                            userId : 0
+                        });
+
+                    }).always(function () {
+                        //Set Observable
+                        value(users);
+
+                        element.value = "";
+                    });
+                }
 
             }); //end click
 

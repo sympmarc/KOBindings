@@ -7,14 +7,39 @@
 		
 		<!--Styles-->
 		<link href="http://code.jquery.com/ui/1.11.4/themes/black-tie/jquery-ui.css" rel="stylesheet"/>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<style type="text/css">
+			.people-picker-list {
+				padding-left: 0px;
+			  	margin-bottom: 0px;
+			}
+
+			.people-picker-list > li {
+			    display: inline-block;
+			    margin-right: 5px;
+			  	font-size: smaller;
+			 	border-bottom: black;
+			  	border-bottom-width: thin;
+			  	border-bottom-style: dashed;
+			}
+		</style>
 		
     </head>
     <body>
-    	<h1>KO Bindings For SharePoint 2010 People Picker</h1>
-		<div>
-			<span data-bind="text: userDisplay" style="padding-right:5px"></span>
-			<img data-bind="spPeoplePicker: userInformation" src="/_layouts/images/addressbook.gif"/>
+	<h1>KO Bindings For SharePoint 2010 People Picker</h1>
+	<div class="input-group">
+		<div class="input-group-addon">
+			<ul class="people-picker-list" data-bind="foreach: userList">
+				<li data-bind="css: {'text-danger' : !valid}">
+					<span data-bind="text: displayName"></span>
+					<span class="glyphicon glyphicon-remove" style="display:none"
+					data-bind="visible: $data, click: removeUser"></span>
+				</li>
+			</ul>	
 		</div>
+		<input type="text" class="form-control" id="inputGroup" data-bind="spPeopleChecker: userInformation">
+		<span class="input-group-addon"><img data-bind="spPeoplePicker: userInformation" src="/_layouts/images/addressbook.gif"/></span>
+	</div>
 
 	<!-- Scripts via CDN change these is you have issues with CDN or local versions to work with on SharePoint -->
 	<script src="/_layouts/1033/init.js"></script>
@@ -27,31 +52,36 @@
 	<!-- Bindings-->	
 	<script src="../../src/spPeoplePicker/spPeoplePicker.js"></script>
 	<script>    
-    $(document).ready(function(){
-    
-		var exViewModel = function(){
-				var self = this;
+    $(document).ready(function() {
 
-				//User Information
-				self.userInformation = ko.observable();
-				
-				//
-				self.userDisplay = ko.computed(function(){
-					if(self.userInformation() == null)
-					{
-						return "Nobody";
-					}
-					else
-					{
-						return "UserID: " + self.userInformation().userId + " | User Name: " + self.userInformation().userName;
-					}
-				});
-				
-				
-			};
-			
-			//Apply Bindings;
-			ko.applyBindings(exViewModel);    
+    	var exViewModel = function() {
+    		var self = this;
+
+    		//User Information
+    		self.userInformation = ko.observable();
+    		self.userList = ko.observableArray();
+
+    		//
+    		self.userDisplay = ko.computed(function() {
+    			if (self.userInformation() != null) {
+    				self.userList.push({
+    					"UserID": self.userInformation()[0].userId,
+    					"displayName": self.userInformation()[0].displayName,
+    					"loginName": self.userInformation()[0].loginName,
+    					"valid": self.userInformation()[0].userId ? true : false
+    				});
+    			}
+    		});
+
+    		self.removeUser = function(user) {
+    			self.userList.remove(user);
+    		}
+
+
+    	};
+
+    	//Apply Bindings;
+    	ko.applyBindings(exViewModel);
     });
 	
     
