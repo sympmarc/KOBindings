@@ -90,6 +90,9 @@ ko.bindingHandlers.spPeopleChecker = {
 
                     loginName = element.value;
 
+                    if(!~loginName.indexOf("/")){
+                        loginName = domainGuess + "\\" + loginName;
+                    }
 
                     var users = [];
 
