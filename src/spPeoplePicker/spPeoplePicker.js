@@ -37,11 +37,11 @@ ko.bindingHandlers.spPeoplePicker = {
                         var sharePointID = $xml.find('Value:first').text();
                         //Resolve deferred object
                         //Save this information
-                        var xData = {
+                        var xData = [{
                                 loginName: fqn,
-                                userName: dispText,
+                                displayName: dispText,
                                 userId: ''
-                            } //end call dialog 
+                            }] //end call dialog 
 
                         //Resolve
                         dfd.resolve(xData);
@@ -56,7 +56,7 @@ ko.bindingHandlers.spPeoplePicker = {
                         addToUserInfoList: true
                     }).done(function(xData) {
                         //Get User Id
-                        userData.userId = jQuery(xData).SPFilterNode("UserInfoID").text();
+                        userData[0].userId = jQuery(xData).SPFilterNode("UserInfoID").text();
 
                         //Set Observable
                         value(userData);
