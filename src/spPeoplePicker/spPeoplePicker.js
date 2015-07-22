@@ -84,6 +84,41 @@ ko.bindingHandlers.spPeopleChecker = {
             //Click
             $(element).on("keypress", function(e) {
                 if (e.keyCode == 13) {
+
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    loginName = element.value;
+
+
+                    var users = [];
+
+                    $().SPServices({
+                        operation: "GetUserInfo",
+                        userLoginName: loginName
+                    }).done(function(xData) {
+                        
+                        $(xData).find("User").each(function() {
+                            users.push({
+                                loginName: $(this).attr("LoginName"),
+                                displayName: $(this).attr("Name"),
+                                userId : $(this).attr("ID")
+                            });
+                        });
+
+                    }).fail(function (xData) {
+                        users.push({
+                            loginName: "",
+                            displayName: loginName,
+                            userId : 0
+                        });
+
+                    }).always(function () {
+                        //Set Observable
+                        value(users);
+
+                        element.value = "";
+                    });
                 }
 
             }); //end click
