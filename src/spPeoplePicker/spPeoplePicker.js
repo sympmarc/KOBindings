@@ -69,3 +69,24 @@ ko.bindingHandlers.spPeoplePicker = {
 
         } //end init
 };
+
+ko.bindingHandlers.spPeopleChecker = {
+    init: function(element, valueAccessor, allBindingsAccessor) {
+            // Initially set the element to be instantly visible/hidden depending on the value
+            var value = valueAccessor();
+
+            //Parameter trigger provides dom element that initaties show or hide
+            var valueUnwrapped = ko.unwrap(value);
+
+            var currentUser = $().SPServices.SPGetCurrentUser();
+            var domainGuess = currentUser.substring(0,currentUser.indexOf("\\"));
+
+            //Click
+            $(element).on("keypress", function(e) {
+                if (e.keyCode == 13) {
+                }
+
+            }); //end click
+
+        } //end init
+};
